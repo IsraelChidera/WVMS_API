@@ -48,9 +48,7 @@ namespace WVMS.BLL.MappingProfile
             CreateMap<OrderDto, Order>();
             CreateMap<Order, OrderDetail>();
             CreateMap<OrderDetail, Order>();
-            
-            //This mapping should be used when we fix map config for these pair
-            //CreateMap<UserForRegistrationDto, AppUsers>();
+                        
         }
     }
 }
