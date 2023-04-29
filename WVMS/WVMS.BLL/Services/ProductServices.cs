@@ -253,7 +253,7 @@ namespace WVMS.BLL.Services
             await _cartRepo.UpdateAsync(cartExists);
 
             productExists.Quantity -= quantity;
-            if (productExists.Quantity <= 0 && productExists.Quantity > quantity)
+            if (productExists.Quantity == 0 && productExists.Quantity > quantity)
             {
                 return $"{productExists.ProductName} is sold out";
             }
