@@ -51,9 +51,7 @@ namespace WVMS.API
             
             builder.Services.AddSwaggerGen(c =>
             {
-                //c.EnableAnnotations();
-                //c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cee store", Version = "v1" });
-
+                c.EnableAnnotations();                
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
@@ -92,6 +90,10 @@ namespace WVMS.API
             builder.Services.AddAutoMapper(Assembly.Load("WVMS.BLL"));
             builder.Services.AddHttpContextAccessor();
             var app = builder.Build();
+
+            var logger = app.Services.GetRequiredService<ILoggerManager>();
+            app.ConfigureExceptionHandler(logger);
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
